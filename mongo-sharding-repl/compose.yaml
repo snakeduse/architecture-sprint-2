@@ -1,4 +1,4 @@
-name: mongo-sharding
+name: mongo-sharding-repl
 
 services:
 
@@ -28,7 +28,9 @@ services:
       interval: 5s
       start_period: 10s
 
-  # Шард 1.
+  ###
+  # Настройка шарда 1 и его реплик.
+  ### 
   mongo_shard1:
     image: mongo:latest
     container_name: mongo_shard1
@@ -54,7 +56,87 @@ services:
       interval: 5s
       start_period: 10s
 
-  # Шард 2.
+  mongo_shard1_r1:
+    image: mongo:latest
+    container_name: mongo_shard1_r1
+    depends_on:
+      - mongo_shard1
+    restart: always
+    ports:
+      - "27024:27024"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.12
+    volumes:
+      - shard1-r1-data:/data/db
+    command:
+      [
+        "--replSet",
+        "shard1", # Название реплики первого шарда.
+        "--bind_ip_all",
+        "--port",
+        "27024"
+      ]
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 5s
+      start_period: 10s
+
+  mongo_shard1_r2:
+    image: mongo:latest
+    container_name: mongo_shard1_r2
+    depends_on:
+      - mongo_shard1
+    restart: always
+    ports:
+      - "27025:27025"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.13
+    volumes:
+      - shard1-r2-data:/data/db
+    command:
+      [
+        "--replSet",
+        "shard1", # Название реплики первого шарда.
+        "--bind_ip_all",
+        "--port",
+        "27025"
+      ]
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 5s
+      start_period: 10s
+
+  mongo_shard1_r3:
+    image: mongo:latest
+    container_name: mongo_shard1_r3
+    depends_on:
+      - mongo_shard1
+    restart: always
+    ports:
+      - "27026:27026"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.14
+    volumes:
+      - shard1-r3-data:/data/db
+    command:
+      [
+        "--replSet",
+        "shard1", # Название реплики первого шарда.
+        "--bind_ip_all",
+        "--port",
+        "27026"
+      ]
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 5s
+      start_period: 10s
+
+  ###
+  # Настройка шарда 2 и его реплик.
+  ### 
   mongo_shard2:
     image: mongo:latest
     container_name: mongo_shard2
@@ -74,6 +156,84 @@ services:
         "--bind_ip_all",
         "--port",
         "27023"
+      ]
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 5s
+      start_period: 10s
+
+  mongo_shard2_r1:
+    image: mongo:latest
+    container_name: mongo_shard2_r1
+    depends_on:
+      - mongo_shard2
+    restart: always
+    ports:
+      - "27027:27027"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.15
+    volumes:
+      - shard2-r1-data:/data/db
+    command:
+      [
+        "--replSet",
+        "shard2", # Название реплики первого шарда.
+        "--bind_ip_all",
+        "--port",
+        "27027"
+      ]
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 5s
+      start_period: 10s
+
+  mongo_shard2_r2:
+    image: mongo:latest
+    container_name: mongo_shard2_r2
+    depends_on:
+      - mongo_shard2
+    restart: always
+    ports:
+      - "27028:27028"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.16
+    volumes:
+      - shard2-r2-data:/data/db
+    command:
+      [
+        "--replSet",
+        "shard2", # Название реплики первого шарда.
+        "--bind_ip_all",
+        "--port",
+        "27028"
+      ]
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 5s
+      start_period: 10s
+
+  mongo_shard2_r3:
+    image: mongo:latest
+    container_name: mongo_shard2_r3
+    depends_on:
+      - mongo_shard2
+    restart: always
+    ports:
+      - "27029:27029"
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.17
+    volumes:
+      - shard2-r3-data:/data/db
+    command:
+      [
+        "--replSet",
+        "shard2", # Название реплики первого шарда.
+        "--bind_ip_all",
+        "--port",
+        "27029"
       ]
     healthcheck:
       test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
@@ -136,4 +296,10 @@ networks:
 volumes:
   config-data:
   shard1-data:
+  shard1-r1-data:
+  shard1-r2-data:
+  shard1-r3-data:
   shard2-data:
+  shard2-r1-data:
+  shard2-r2-data:
+  shard2-r3-data:

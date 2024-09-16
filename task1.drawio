@@ -120,7 +120,7 @@
           <mxGeometry x="200" y="700" width="80" height="90" as="geometry" />
         </mxCell>
         <mxCell id="qf011W7v-OthzEJB3jPR-2" value="MongoDB&lt;div style=&quot;font-size: 14px;&quot;&gt;(shard1-1)&lt;/div&gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;Replica 3&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeWidth=2;fontSize=14;" parent="8-UIjbpxumQ3e-D2aae4-1" vertex="1">
-          <mxGeometry x="290" y="700" width="80" height="90" as="geometry" />
+          <mxGeometry x="296" y="700" width="80" height="90" as="geometry" />
         </mxCell>
         <mxCell id="qf011W7v-OthzEJB3jPR-3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;curved=0;strokeWidth=2;fontSize=14;" parent="8-UIjbpxumQ3e-D2aae4-1" source="8-UIjbpxumQ3e-D2aae4-6" target="qf011W7v-OthzEJB3jPR-0" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -138,7 +138,7 @@
           <mxGeometry x="599" y="690" width="80" height="90" as="geometry" />
         </mxCell>
         <mxCell id="qf011W7v-OthzEJB3jPR-8" value="MongoDB&lt;div style=&quot;font-size: 14px;&quot;&gt;(shard1-2)&lt;/div&gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;Replica 3&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeWidth=2;fontSize=14;" parent="8-UIjbpxumQ3e-D2aae4-1" vertex="1">
-          <mxGeometry x="689" y="690" width="80" height="90" as="geometry" />
+          <mxGeometry x="695" y="690" width="80" height="90" as="geometry" />
         </mxCell>
         <mxCell id="qf011W7v-OthzEJB3jPR-9" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=14;fontColor=default;labelBackgroundColor=default;endArrow=classic;strokeWidth=2;" parent="8-UIjbpxumQ3e-D2aae4-1" source="8-UIjbpxumQ3e-D2aae4-5" target="qf011W7v-OthzEJB3jPR-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
